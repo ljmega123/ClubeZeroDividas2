@@ -465,55 +465,19 @@
 
         /* Responsive Improvements */
         @media (max-width: 768px) {
-            header { padding: 0.8rem 5% !important; height: auto !important; position: fixed; }
-            .logo-img { height: 70px !important; margin: 0; }
-            
-            .mobile-toggle { display: block; order: 3; margin-left:15px; font-size: 2rem; }
-            
-            nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                gap: 15px;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-                border-top: 1px solid #eee;
-            }
-
-            nav.active {
+            header { 
+                padding: 1rem 5% !important; 
+                height: auto !important; 
+                position: fixed; 
                 display: flex;
+                justify-content: center !important; 
+                align-items: center;
+                background: rgba(255, 255, 255, 0.98) !important;
             }
-
-            /* Show only these two on mobile header */
-            .nav-primary-mobile {
-                display: flex;
-                gap: 12px;
-                order: 2;
-                margin-left: auto;
-            }
-
-            .nav-primary-mobile a {
-                font-size: 0.75rem;
-                font-weight: 700;
-                text-decoration: none;
-                color: var(--text-main);
-                padding: 8px 12px;
-                background: rgba(0,0,0,0.03);
-                border-radius: 50px;
-            }
+            .logo-img { height: 70px !important; margin: 0 auto; }
             
-            .nav-primary-mobile a.accent {
-                background: var(--accent);
-                color: white;
-            }
-
-            /* Hide full nav links that are redundant if active */
-            nav a { width: 100%; text-align: center; padding: 10px; font-size: 1rem !important; }
-            .nav-btn { width: 100% !important; text-align: center; }
+            nav { display: none !important; }
+            .nav-primary-mobile { display: none !important; }
 
             .hero { padding: 180px 5% 100px; }
             .hero h1 { font-size: 3.2rem; line-height: 1; margin-bottom: 20px; }
