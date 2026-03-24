@@ -118,6 +118,19 @@
             background: var(--primary-dark);
         }
 
+        .nav-accent {
+            background: var(--accent);
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .nav-accent:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
         /* Mobile Menu Toggle */
         .mobile-toggle {
             display: none;
@@ -411,7 +424,7 @@
     <nav id="nav-menu">
         <a href="#processo">Como Funciona</a>
         <a href="https://clubezerodividas.com.br/platform/consulta-processo.php">Consulta Processo</a>
-        <a href="#afiliado">Seja Afiliado</a>
+        <a href="#afiliado" class="nav-accent">Seja Afiliado</a>
         <a href="http://clubezerodividas.com.br/platform/user/dashboard.php" class="nav-btn">Área do Afiliado</a>
     </nav>
 </header>
@@ -448,7 +461,7 @@
         </div>
         <div class="card">
             <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-            <h3>Score Blindado</h3>
+            <h3>Aumento de Score</h3>
             <p>Não basta limpar o nome, ajudamos você a reconstruir seu score para voltar a ter crédito no mercado.</p>
         </div>
     </div>
