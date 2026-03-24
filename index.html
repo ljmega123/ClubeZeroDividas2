@@ -142,9 +142,9 @@
             color: var(--text-main);
         }
 
-        /* Mobile Only - Bottom Navigation */
+        /* Global - Bottom Navigation (Now for PC and Mobile) */
         .bottom-nav {
-            display: none;
+            display: flex;
             position: fixed;
             bottom: 0;
             left: 0;
@@ -157,9 +157,11 @@
             z-index: 10000;
             justify-content: space-around;
             align-items: center;
-            padding: 0 10px;
+            padding: 0 10%;
             box-shadow: 0 -5px 20px rgba(0,0,0,0.03);
         }
+
+        body { padding-bottom: 70px; }
 
         .bottom-nav a {
             display: flex;
@@ -186,8 +188,7 @@
         }
 
         @media (max-width: 768px) {
-            .bottom-nav { display: flex; }
-            body { padding-bottom: 70px; }
+            .bottom-nav { padding: 0 10px; }
             .nav-primary-mobile { display: none !important; }
             
             header { 
