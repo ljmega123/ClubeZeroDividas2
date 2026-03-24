@@ -457,7 +457,6 @@
             opacity: 1;
             color: var(--primary);
         }
-
         .copyright {
             border-top: 1px solid #1e293b;
             padding-top: 30px;
@@ -466,10 +465,10 @@
 
         /* Responsive Improvements */
         @media (max-width: 768px) {
-            header { padding: 0.8rem 5%; height: auto !important; position: fixed; }
-            .logo-img { height: 75px; margin: 0; }
+            header { padding: 0.8rem 5% !important; height: auto !important; position: fixed; }
+            .logo-img { height: 70px !important; margin: 0; }
             
-            .mobile-toggle { display: block; order: 3; margin-left:15px; }
+            .mobile-toggle { display: block; order: 3; margin-left:15px; font-size: 2rem; }
             
             nav {
                 display: none;
@@ -516,8 +515,41 @@
             nav a { width: 100%; text-align: center; padding: 10px; font-size: 1rem !important; }
             .nav-btn { width: 100% !important; text-align: center; }
 
-            .hero { padding: 140px 5% 60px; }
-            .affiliate-section { border-radius: 0; margin: 0; padding: 60px 6%; text-align: center; }
+            .hero { padding: 180px 5% 100px; }
+            .hero h1 { font-size: 3.2rem; line-height: 1; margin-bottom: 20px; }
+            .hero p { font-size: 1.25rem; font-weight: 400; color: #cbd5e1; }
+
+            .grid { gap: 25px; padding: 0 5%; }
+            .card { padding: 40px 30px; border-radius: 28px; }
+            .card h3 { font-size: 1.6rem; }
+            .card p { font-size: 1.15rem; line-height: 1.5; }
+            
+            .affiliate-section { 
+                border-radius: 40px; 
+                margin: 0 3% 80px; 
+                padding: 60px 8%; 
+                text-align: center; 
+            }
+            .affiliate-info h2 { font-size: 2.6rem; line-height: 1.1; margin-bottom: 20px; }
+            .affiliate-info p { font-size: 1.2rem; margin-bottom: 40px; }
+            
+            .btn-submit { 
+                font-size: 1.25rem; 
+                height: 70px; 
+                border-radius: 20px;
+                box-shadow: 0 8px 30px rgba(37, 99, 235, 0.3);
+            }
+            
+            .form-group input { 
+                height: 65px; 
+                font-size: 1.1rem; 
+                padding-left: 55px;
+            }
+
+            .section-title h2 { font-size: 3rem; }
+            .section-title p { font-size: 1.3rem; }
+            
+            .section { padding: 100px 5%; }
         }
 
         @media (min-width: 769px) {
