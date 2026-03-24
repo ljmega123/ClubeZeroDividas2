@@ -37,6 +37,17 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--bg-light); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
 
+        /* Luxury Scroll Progress Bar */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; width: 0%; height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            z-index: 2000; transition: width 0.1s ease;
+        }
+
+        /* Reveal Animations Styles */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
         /* Header */
         header {
             background: var(--glass);
@@ -113,8 +124,10 @@
         .form-group input { width: 100%; padding: 16px 20px 16px 50px; border: 2px solid #e2e8f0; border-radius: 16px; font-size: 1rem; outline: none; transition: 0.3s; }
         .form-group input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
 
-        .btn-submit { width: 100%; background: var(--primary); color: white; border: none; padding: 18px; border-radius: 16px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .btn-submit:hover { background: var(--primary-dark); }
+        .btn-submit { width: 100%; background: var(--primary); color: white; border: none; padding: 18px; border-radius: 16px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; animation: pulseGlow 3s infinite; }
+        .btn-submit:hover { background: var(--primary-dark); transform: scale(1.02); }
+
+        @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); } }
 
         /* Footer */
         footer { background: #020617; color: #94a3b8; padding: 80px 8% 40px; text-align: center; position: relative; }
@@ -175,9 +188,18 @@
     <a href="#header" class="active"><i class="fas fa-home"></i><span>Home</span></a>
     <a href="https://clubezerodividas.com.br/platform/consulta-processo.php"><i class="fas fa-search"></i><span>Processo</span></a>
     <a href="#afiliado"><i class="fas fa-users"></i><span>Afiliados</span></a>
-    <a href="https://wa.me/5548996985646" class="highlight"><i class="fab fa-whatsapp"></i><span>Suporte</span></a>
+    <a href="https://wa.me/5548996985646" class="highlight" style="animation: pulseGreen 2.5s infinite;">
+        <i class="fab fa-whatsapp"></i>
+        <span>Suporte</span>
+    </a>
     <a href="http://clubezerodividas.com.br/platform/user/dashboard.php"><i class="fas fa-user-circle"></i><span>Acesso</span></a>
 </div>
+
+<div id="progress-bar"></div>
+
+<style>
+    @keyframes pulseGreen { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+</style>
 
 <section class="hero">
     <div class="hero-content">
@@ -258,11 +280,40 @@
 </footer>
 
 <script>
+    // Header & Scroll Logic
     const header = document.getElementById('header');
+    const progressBar = document.getElementById('progress-bar');
+
     window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + "%";
+
         if (window.scrollY > 50) { header.classList.add('scrolled'); } 
         else { header.classList.remove('scrolled'); }
+        
+        revealOnScroll();
     });
+
+    // Reveal Animation Logic
+    function revealOnScroll() {
+        const reveals = document.querySelectorAll('.reveal');
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const elementTop = reveals[i].getBoundingClientRect().top;
+            const elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+
+    // Initial check and marking sections
+    document.querySelectorAll('.section, .grid > div, .affiliate-section, .hero-content').forEach(el => {
+        el.classList.add('reveal');
+    });
+    revealOnScroll();
 </script>
 
 </body>
