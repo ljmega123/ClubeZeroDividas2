@@ -175,20 +175,25 @@
         /* Mobile Improvements */
         @media (max-width: 768px) {
             header { 
-                padding: 1rem 5% !important; height: auto !important; position: fixed; display: flex; 
+                padding: 1.2rem 5% !important; height: auto !important; position: fixed; display: flex; 
                 justify-content: center !important; align-items: center; 
-                background: rgba(255, 255, 255, 0.92) !important; 
-                backdrop-filter: blur(25px) !important; -webkit-backdrop-filter: blur(25px) !important;
-                border-bottom: 1px solid rgba(0,0,0,0.04) !important;
-                box-shadow: 0 4px 30px rgba(0,0,0,0.03); 
-                transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+                background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%) !important; 
+                backdrop-filter: none !important;
+                border-bottom: 1px solid rgba(59, 130, 246, 0.2) !important;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.3); 
+                transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important; 
             }
             .logo-img { 
-                height: 95px !important; margin: 0 auto !important; width: auto; 
-                filter: drop-shadow(0 4px 10px rgba(0,0,0,0.02));
-                transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+                height: 120px !important; margin: 0 auto !important; width: auto; 
+                filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5)) brightness(1.1);
+                transform: scale(1.05);
+                transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important; 
             }
-            header.scrolled { padding: 0.2rem 5% !important; background: rgba(255, 255, 255, 0.8) !important; border-bottom-color: rgba(0,0,0,0.02) !important; }
+            header.scrolled { 
+                padding: 0.3rem 5% !important; 
+                background: linear-gradient(135deg, #0f172a 0%, #0f172a 100%) !important; 
+                box-shadow: 0 2px 20px rgba(0,0,0,0.4) !important; 
+            }
             header.scrolled .logo-img { opacity: 0 !important; height: 0 !important; transform: scale(0.9) translateY(-15px) !important; pointer-events: none !important; }
             
             nav { display: none !important; }
@@ -337,7 +342,7 @@
         const scrolled = (winScroll / height) * 100;
         progressBar.style.width = scrolled + "%";
 
-        if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+        if (window.scrollY > 100) { header.classList.add('scrolled'); } 
         else { header.classList.remove('scrolled'); }
         
         revealOnScroll();
