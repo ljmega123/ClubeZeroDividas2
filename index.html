@@ -68,10 +68,10 @@
         }
 
         .logo-img {
-            height: 220px; /* Altere este valor para aumentar ou diminuir */
+            height: 120px; /* Tamanho original para PC */
             width: auto;   /* Mantém a proporção correta */
             display: block;
-            margin: -45px 0; /* Ajusta a posição vertical para não empurrar o menu */
+            margin: -25px 0; /* Ajusta a posição vertical */
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             animation: fadeInLogo 1s ease-out;
         }
@@ -476,10 +476,10 @@
                 border: none !important;
                 box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             }
-            .logo-img { height: 130px !important; margin: 0 auto !important; width: auto; }
+            .logo-img { height: 140px !important; margin: 0 auto !important; width: auto; }
             
-            .mobile-toggle { display: none !important; }
             nav { display: none !important; }
+            .mobile-toggle { display: none !important; }
             .nav-primary-mobile { display: none !important; }
 
             .hero { padding: 180px 5% 100px; }
@@ -550,9 +550,17 @@
 <body>
 
 <header id="header">
-    <div class="logo-container" style="width: 100%; display: flex; justify-content: center;">
+    <div class="logo-container">
         <img src="logo.png" class="logo-img" alt="Clube Zero Dívidas" onerror="this.src='https://via.placeholder.com/150x50?text=CLUBE+ZERO+DIVIDAS';">
     </div>
+    
+    <nav id="nav-menu">
+        <a href="#header">Home</a>
+        <a href="#processo">Como Funciona</a>
+        <a href="https://clubezerodividas.com.br/platform/consulta-processo.php">Consulta Processo</a>
+        <a href="#afiliado">Seja Afiliado</a>
+        <a href="http://clubezerodividas.com.br/platform/user/dashboard.php" class="nav-btn">Área do Afiliado</a>
+    </nav>
 </header>
 
 <div class="bottom-nav">
