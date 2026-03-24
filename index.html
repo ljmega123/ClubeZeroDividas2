@@ -44,9 +44,44 @@
             z-index: 2000; transition: width 0.1s ease;
         }
 
-        /* Reveal Animations Styles */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* Significant Reveal Styles */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Staggered Delay Helpers */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.25s; }
+        .delay-3 { transition-delay: 0.4s; }
+
+        /* Shimmer Effect for Cards */
+        .card { position: relative; overflow: hidden; }
+        .card::before {
+            content: ''; position: absolute; top: -100%; left: -100%; width: 50%; height: 300%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+            transform: rotate(45deg); transition: 0.8s; pointer-events: none;
+        }
+        .card:hover::before { left: 150%; top: -150%; }
+
+        /* Hero Text Shimmer */
+        .hero h1 { 
+            background: linear-gradient(90deg, #fff 0%, #a5b4fc 50%, #fff 100%);
+            background-size: 200% auto; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            animation: textShine 5s linear infinite;
+        }
+        @keyframes textShine { to { background-position: 200% center; } }
+
+        /* Button Sweep Effect */
+        .btn-submit { position: relative; overflow: hidden; }
+        .btn-submit::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-submit:hover::after { left: 100%; }
+        
+        /* Floating Icons */
+        .card-icon { animation: floatIcon 4s ease-in-out infinite; }
+        @keyframes floatIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
         /* Header */
         header {
@@ -217,17 +252,17 @@
         <p>A solução definitiva para o seu problema de crédito.</p>
     </div>
     <div class="grid">
-        <div class="card">
+        <div class="card reveal delay-1">
             <div class="card-icon"><i class="fas fa-bolt"></i></div>
             <h3>Agilidade Absoluta</h3>
             <p>Seu nome limpo em tempo recorde. Usamos as estratégias mais modernas do mercado jurídico-financeiro.</p>
         </div>
-        <div class="card">
+        <div class="card reveal delay-2">
             <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
             <h3>Segurança Jurídica</h3>
             <p>Processos 100% dentro da lei, garantindo que suas dívidas sejam resolvidas de forma definitiva.</p>
         </div>
-        <div class="card">
+        <div class="card reveal delay-3">
             <div class="card-icon"><i class="fas fa-chart-line"></i></div>
             <h3>Aumento de Score</h3>
             <p>Não basta limpar o nome, ajudamos você a reconstruir seu score para voltar a ter crédito no mercado.</p>
@@ -309,10 +344,14 @@
         }
     }
 
-    // Initial check and marking sections
-    document.querySelectorAll('.section, .grid > div, .affiliate-section, .hero-content').forEach(el => {
+    // Initial marking specific reveals for staggering
+    document.querySelectorAll('.section, .affiliate-section, .hero-content').forEach(el => {
         el.classList.add('reveal');
     });
+    document.querySelectorAll('.affiliate-info ul li').forEach((el, index) => {
+        el.classList.add('reveal', `delay-${index + 1}`);
+    });
+    
     revealOnScroll();
 </script>
 
