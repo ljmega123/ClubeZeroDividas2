@@ -23,13 +23,16 @@
             --primary: #2563eb;
             --primary-dark: #1e40af;
             --accent: #10b981;
-            --bg-dark: #0f172a;
+            --emerald: #059669;
+            --bg-dark: #0a192f;
             --bg-light: #f8fafc;
             --text-main: #1e293b;
             --text-muted: #64748b;
             --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.82);
-            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            --glass: rgba(255, 255, 255, 0.85);
+            --glass-dark: rgba(10, 25, 47, 0.8);
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-premium: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
         }
 
         * {
@@ -141,9 +144,9 @@
 
         /* Hero Section */
         .hero {
-            background: radial-gradient(circle at top right, #1e3a8a 0%, #0f172a 100%);
+            background: radial-gradient(circle at top right, #112240 0%, #0a192f 100%);
             color: white;
-            padding: 160px 8% 100px;
+            padding: 200px 8% 120px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -153,26 +156,20 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-            opacity: 0.1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 25px;
-            background: linear-gradient(to right, #fff, #94a3b8);
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
 
         .hero p {
@@ -181,6 +178,7 @@
             color: #94a3b8;
             max-width: 650px;
             margin-inline: auto;
+            font-weight: 300;
         }
 
         /* Video Section */
@@ -233,28 +231,53 @@
 
         .card {
             background: var(--white);
-            padding: 40px;
-            border-radius: 24px;
+            padding: 45px 35px;
+            border-radius: 32px;
             text-align: left;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-soft);
             border: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
-            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-premium);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .card:hover::after {
+            opacity: 1;
         }
 
         .card-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(37, 99, 235, 0.1);
-            border-radius: 16px;
+            width: 70px;
+            height: 70px;
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             color: var(--primary);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            transition: 0.3s;
+        }
+
+        .card:hover .card-icon {
+            background: var(--primary);
+            color: white;
+            transform: rotate(5deg);
         }
 
         .card h3 {
@@ -341,10 +364,18 @@
 
         /* Footer */
         footer {
-            background: #000;
+            background: #020617;
             color: #94a3b8;
-            padding: 60px 8% 30px;
+            padding: 80px 8% 40px;
             text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
         }
 
         .footer-logo {
@@ -379,34 +410,26 @@
 
         /* Responsive Improvements */
         @media (max-width: 768px) {
-            header { padding: 0.8rem 5%; height: auto !important; }
-            .logo-img { height: 70px; margin: 0; }
+            header { padding: 0.8rem 5%; height: 80px !important; }
+            .logo-img { height: 90px; margin: 0; }
             
-            .mobile-toggle { display: block; }
+            .hero { padding: 160px 5% 80px; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+
+            .grid { gap: 20px; }
+            .card { padding: 35px 25px; border-radius: 24px; }
             
-            nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                gap: 15px;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-                border-top: 1px solid #eee;
+            .affiliate-section { 
+                border-radius: 0; 
+                margin: 0; 
+                padding: 60px 6%;
+                text-align: center;
             }
-
-            nav.active {
-                display: flex;
-            }
-
-            nav a { width: 100%; text-align: center; padding: 10px; }
-            .nav-btn { width: 100% !important; text-align: center; }
-
-            .hero { padding: 140px 5% 60px; }
-            .affiliate-section { border-radius: 0; margin: 0; }
+            .affiliate-info h2 { font-size: 2.2rem; }
+            .affiliate-info ul { text-align: left; margin-top: 25px; }
+            
+            .section { padding: 80px 6%; }
         }
 
         /* Clean layout without reveal animations */
