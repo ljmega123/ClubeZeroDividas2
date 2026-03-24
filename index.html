@@ -118,6 +118,14 @@
             background: var(--primary-dark);
         }
 
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
         /* Hero Section */
         .hero {
             background: radial-gradient(circle at top right, #1e3a8a 0%, #0f172a 100%);
@@ -358,11 +366,33 @@
 
         /* Responsive Improvements */
         @media (max-width: 768px) {
-            header { padding: 1rem 5%; }
-            .logo-img { height: 100px; margin: -15px 0; }
-            header.scrolled .logo-img { height: 60px; margin: -5px 0; }
-            nav { display: none; } /* Could add a hamburger menu if needed */
-            .hero { padding: 120px 5% 60px; }
+            header { padding: 0.8rem 5%; height: auto !important; }
+            .logo-img { height: 70px; margin: 0; }
+            
+            .mobile-toggle { display: block; }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                border-top: 1px solid #eee;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a { width: 100%; text-align: center; padding: 10px; }
+            .nav-btn { width: 100% !important; text-align: center; }
+
+            .hero { padding: 140px 5% 60px; }
             .affiliate-section { border-radius: 0; margin: 0; }
         }
 
@@ -375,7 +405,10 @@
     <div class="logo-container">
         <img src="logo.png" class="logo-img" alt="Clube Zero Dívidas" onerror="this.src='https://via.placeholder.com/150x50?text=CLUBE+ZERO+DIVIDAS';">
     </div>
-    <nav>
+    <div class="mobile-toggle" id="mobile-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+    <nav id="nav-menu">
         <a href="#processo">Como Funciona</a>
         <a href="https://clubezerodividas.com.br/platform/consulta-processo.php">Consulta Processo</a>
         <a href="#afiliado">Seja Afiliado</a>
@@ -476,14 +509,23 @@
 <script>
     // Progressive Header Animation
     const header = document.getElementById('header');
+    const navMenu = document.getElementById('nav-menu');
+    const mobileToggle = document.getElementById('mobile-toggle');
     
+    mobileToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const icon = mobileToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
             header.style.padding = '0.5rem 8%';
         } else {
             header.classList.remove('scrolled');
-            header.style.padding = '0.7rem 8%';
+            header.style.padding = '0.8rem 8%';
         }
     });
 
