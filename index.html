@@ -175,29 +175,33 @@
         /* Mobile Improvements */
         @media (max-width: 768px) {
             header { 
-                padding: 0.3rem 5% !important; height: auto !important; position: fixed; display: flex; 
-                justify-content: center !important; align-items: center; 
-                background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%) !important; 
-                backdrop-filter: none !important;
-                border-bottom: 1px solid rgba(59, 130, 246, 0.2) !important;
-                box-shadow: 0 8px 32px rgba(0,0,0,0.3); 
-                transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                padding: 0.2rem 5% !important;
+                height: auto !important;
+                position: fixed;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center;
+                background: #ffffff !important; 
+                border-bottom: 1px solid #f1f5f9 !important;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.06); 
+                transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
                 overflow: visible !important;
+                z-index: 1000;
             }
             .logo-img { 
-                height: 140px !important; margin: 0 auto !important; width: auto; 
-                margin-top: 10px !important;
-                margin-bottom: -20px !important;
-                filter: drop-shadow(0 5px 20px rgba(59, 130, 246, 0.6)) brightness(1.15);
-                transform: scale(1);
-                transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+                height: 150px !important;
+                width: auto;
+                margin: 5px auto -30px auto !important;
+                display: block;
+                filter: drop-shadow(0 6px 15px rgba(0,0,0,0.08));
+                transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important; 
             }
             header.scrolled { 
-                padding: 0.2rem 5% !important; 
-                background: linear-gradient(135deg, #0f172a 0%, #0f172a 100%) !important; 
-                box-shadow: 0 2px 20px rgba(0,0,0,0.4) !important; 
+                padding: 0.1rem 5% !important; 
+                background: #ffffff !important;
+                box-shadow: 0 2px 15px rgba(0,0,0,0.04) !important; 
             }
-            header.scrolled .logo-img { opacity: 0 !important; height: 0 !important; margin: 0 !important; transform: scale(0.9) translateY(-15px) !important; pointer-events: none !important; }
+            header.scrolled .logo-img { opacity: 0 !important; height: 0 !important; margin: 0 !important; transform: translateY(-20px) !important; pointer-events: none !important; }
             
             nav { display: none !important; }
             .bottom-nav { display: flex !important; }
